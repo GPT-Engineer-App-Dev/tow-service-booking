@@ -1,24 +1,12 @@
 import {
-  Bell,
-  CircleUser,
   Home,
-  LineChart,
+  Calendar,
+  Info,
+  Mail,
   Menu,
-  Package,
-  Package2,
-  Search,
-  ShoppingCart,
-  Users,
-} from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+  CircleUser,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,10 +14,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Outlet } from "react-router-dom";
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavLink, Outlet } from "react-router-dom";
 
 function SharedLayout() {
   return (
@@ -38,19 +25,56 @@ function SharedLayout() {
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <a href="/" className="flex items-center gap-2 font-semibold">
-              <Package2 className="h-6 w-6" />
-              <span className="">Acme Inc</span>
+              <Home className="h-6 w-6" />
+              <span className="">Tow Service Booking</span>
             </a>
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <a
-                href="#"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    isActive ? "bg-muted text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`
+                }
               >
                 <Home className="h-4 w-4" />
                 Home
-              </a>
+              </NavLink>
+              <NavLink
+                to="/booking"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    isActive ? "bg-muted text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`
+                }
+              >
+                <Calendar className="h-4 w-4" />
+                Booking
+              </NavLink>
+              <NavLink
+                to="/about-us"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    isActive ? "bg-muted text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`
+                }
+              >
+                <Info className="h-4 w-4" />
+                About Us
+              </NavLink>
+              <NavLink
+                to="/contact-us"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    isActive ? "bg-muted text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`
+                }
+              >
+                <Mail className="h-4 w-4" />
+                Contact Us
+              </NavLink>
             </nav>
           </div>
         </div>
@@ -70,20 +94,50 @@ function SharedLayout() {
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
               <nav className="grid gap-2 text-lg font-medium">
-                <a
-                  href="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 text-lg font-semibold ${
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    }`
+                  }
                 >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
-                </a>
-                <a
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Home className="h-5 w-5" />
+                  <Home className="h-6 w-6" />
                   Home
-                </a>
+                </NavLink>
+                <NavLink
+                  to="/booking"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 text-lg font-semibold ${
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    }`
+                  }
+                >
+                  <Calendar className="h-6 w-6" />
+                  Booking
+                </NavLink>
+                <NavLink
+                  to="/about-us"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 text-lg font-semibold ${
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    }`
+                  }
+                >
+                  <Info className="h-6 w-6" />
+                  About Us
+                </NavLink>
+                <NavLink
+                  to="/contact-us"
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 text-lg font-semibold ${
+                      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    }`
+                  }
+                >
+                  <Mail className="h-6 w-6" />
+                  Contact Us
+                </NavLink>
               </nav>
             </SheetContent>
           </Sheet>
@@ -112,7 +166,7 @@ function SharedLayout() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 export default SharedLayout;
